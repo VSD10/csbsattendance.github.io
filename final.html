@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #message {
+            color: green;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #attendance-report {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #copy-button {
+            background-color: #008CBA;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        #copy-button:hover {
+            background-color: #005f6b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Attendance Tracker</h1>
+
+    <div id="message"></div>
+
+    <button onclick="recordAttendance('Leave')">Record Leave</button>
+    <button onclick="recordAttendance('On-duty')">Record On Duty</button>
+    <button onclick="printAttendance()">Print Attendance</button>
+
+    <h2>Attendance Report</h2>
+    <div id="attendance-report"></div>
+
+    <button id="copy-button" onclick="copyReport()">Copy Report</button>
+
+    <script>
+        // List of student names
+        const studentNames = [
+        "ARTHI S",
+    "ADITHIYA D",
+    "AKKSHETHA M",
+    "ARAVINDRAJ G",
+    "ARUNACHALESHWARAN A",
+    "ANUSRI S",
+    "BARATHI K",
+    "BATHRINATH K",
+    "DEEPAN R",
+    "DHANUSH K R",
+    "DHARSHAN V S",
+    "DIVAKAR T",
+    "GAYATHRI R",
+    "GAYATHRI DEVI S",
+    "GIRIDASS S",
+    "GOPIKA S",
+    "GOWMITHA R",
+    "HARI KRISHNAN V",
+    "HARSHINI K",
+    "HEMAPRIYAA S",
+    "JAYAVARSHAN SS",
+    "KABILAN S",
+    "KAMALI S",
+    "KRISHNAPRASATH B",
+    "LOGESWARAN P V",
+    "MADHU VARSHA P",
+    "MALAVICKA V",
+    "MANIKANDAN R",
+    "MOHAMMED RASIQUE S A",
+    "NAVEEN KUMAR M",
+    "NIRNAJAN S",
+    "NITHYA SHREE S",
+    "PAVITHRA N",
+    "POJASHREE V",
+    "PRAGATHI C",
+    "PREETHIKA S V",
+    "PRIYADHARSHAN D S",
+    "RAMANAN A S",
+    "RAVEENA K",
+    "RISHWANTH ADISHWAR K",
+    "SABRANA K",
+    "SACHIN V",
+    "SAMIHA M",
+    "SANJANA S P",
+    "SASHVINA F",
+    "SASIDHARAN B",
+    "SHOBIKA S",
+    "SHYAM SUNDAR K",
+    "SRIRAM P",
+    "SUMITHA S",
+    "SURENDAR P",
+    "SWAPNA D P",
+    "UMA NANDHINI M",
+    "VAISHNAVI V",
+    "VASUDEVAN M",
+    "NAVIN KUMAR M",
+    "PRADEEP M",
+    "PRADIBA A S",
+    "SANTHOSH KUMAR S"
+            // Add more student names here
+        ];
+
+        let leave = [];
+        let onDuty = [];
+
+        function getChoice(question) {
+            return new Promise((resolve, reject) => {
+                const choice = prompt(question);
+                resolve(parseInt(choice));
+            });
+        }
+
+        async function recordAttendance(type) {
+            const list = [];
+
+            while (true) {
+                const studentName = prompt(`Enter student Roll number for ${type} (or leave blank and enter to stop):`);
+                if (!studentName) {
+                    break;
+                }
+                list.push(studentName);
+            }
+
+            if (type === "Leave") {
+                leave = list;
+            } else {
+                onDuty = list;
+            }
+
+            updateMessage(`${type} recorded: ${list.join(", ")}`);
+        }
+
+        function printAttendance() {
+            const presentCount = studentNames.length - leave.length;
+            const absentCount = leave.length;
+            const attendancePercentage = (presentCount / studentNames.length) * 100;
+
+            let report = `
+Good Morning Sir, Today's Attendance
+
+Date: ${new Date().toLocaleDateString()}
+Class: II- B.Tech (CSBS)
+Total Strength: ${studentNames.length}
+No. of Present: ${presentCount}
+No. of Absent: ${absentCount}
+
+Absentees:
+`;
+            for (let i = 0; i < leave.length; i++) {
+                report += `\t${i + 1}. ${studentNames[leave[i]]}\n`;
+            }
+
+            report += "\nOn-duty Students:\n";
+            for (let i = 0; i < onDuty.length; i++) {
+                report += `\t${i + 1}. ${studentNames[onDuty[i]]}\n`;
+            }
+
+            report += `
+Percentage: ${attendancePercentage.toFixed(2)}%
+
+Thank you Sir.`;
+
+            document.getElementById("attendance-report").innerText = report;
+        }
+
+        function updateMessage(message) {
+            document.getElementById("message").innerText = message;
+        }
+
+        function copyReport() {
+            const reportText = document.getElementById("attendance-report").innerText;
+            navigator.clipboard.writeText(reportText);
+            alert("Attendance report copied to clipboard!");
+        }
+    </script>
+</body>
+</html>

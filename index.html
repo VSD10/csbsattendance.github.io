@@ -209,7 +209,7 @@
         function printAttendance() {
             const presentCount =( studentNames.length - leave.length) - 1;
             const absentCount = leave.length;
-            const attendancePercentage = (presentCount / studentNames.length) * 100;
+            const attendancePercentage = (presentCount / ((studentNames.length) - 1)* 100;
 
             let report = `
 Good Morning Sir, Today's Attendance

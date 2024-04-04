@@ -63,24 +63,40 @@
             margin-top: 20px;
         }
 
-    /* CSS for text at the end */
-    .bottom-text {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        background-color: #333;
-        color: #fff;
-        padding: 10px 0;
-    }
+        /* CSS for text at the end */
+        .bottom-text {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
 
         #copy-button:hover {
             background-color: #005f6b;
         }
+
+        #whatsapp-button {
+            background-color: #25d366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        #whatsapp-button:hover {
+            background-color: #128c7e;
+        }
     </style>
 </head>
 <body>
-    <h1>IInd YEAR CSBS ATTEDANCE GENIE</h1>
+    <h1>IInd YEAR CSBS ATTENDANCE GENIE</h1>
 
     <div id="message"></div>
 
@@ -92,12 +108,13 @@
     <div id="attendance-report"></div>
 
     <button id="copy-button" onclick="copyReport()">Copy Report</button>
+    <button id="whatsapp-button" onclick="shareOnWhatsApp()">Share on WhatsApp</button>
 
     <script>
         // List of student names
         const studentNames = [
             "demo",
-        "ARTHI S",
+                    "ARTHI S",
     "ADITHIYA D",
     "AKKSHETHA M",
     "ARAVINDRAJ G",
@@ -188,18 +205,16 @@
 
             updateMessage(`${type} recorded: ${list.join(", ")}`);
         }
-
         function printAttendance() {
-            const presentCount = studentNames.length - leave.length;
+            const presentCount =( studentNames.length - leave.length) - 1;
             const absentCount = leave.length;
-            const attendancePercentage = (presentCount / studentNames.length) * 100;
-
+            const attendancePercentage = (presentCount / (studentNames.length- 1))* 100;
             let report = `
 Good Morning Sir, Today's Attendance
 
 Date: ${new Date().toLocaleDateString()}
 Class: II- B.Tech (CSBS)
-Total Strength: ${studentNames.length}
+Total Strength: ${studentNames.length-1}
 No. of Present: ${presentCount}
 No. of Absent: ${absentCount}
 
@@ -207,9 +222,7 @@ Absentees:
 `;
             for (let i = 0; i < leave.length; i++) {
                 report += `\t${i + 1}. ${studentNames[leave[i]]}\n`;
-            }
-
-            report += "\nOn-duty Students:\n";
+            }report += "\nOn-duty Students:\n";
             for (let i = 0; i < onDuty.length; i++) {
                 report += `\t${i + 1}. ${studentNames[onDuty[i]]}\n`;
             }
@@ -231,8 +244,14 @@ Thank you Sir.`;
             navigator.clipboard.writeText(reportText);
             alert("Attendance report copied to clipboard!");
         }
+
+        function shareOnWhatsApp() {
+            const reportText = document.getElementById("attendance-report").innerText;
+            const whatsappURL = `https://wa.me/?text=${encodeURIComponent(reportText)}`;
+            window.open(whatsappURL, "_blank");
+        }
     </script>
-    <div style="height: 10vh;"></div>
+    <div style="height: 50vh;"></div>
 </body>
 <div class="bottom-text">
     BY DHARSHAN VS

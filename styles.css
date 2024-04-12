@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: radial-gradient( circle 513px at 52.1% 52.6%,  rgba(240,241,163,1) 0%, rgba(236,135,135,1) 90% );
+    background: rgb(34,193,195);
+background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
     margin: 10px;
     padding: 0;
 }

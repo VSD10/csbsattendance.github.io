@@ -4,6 +4,7 @@ body {
   padding: 0;
   text-align: center;
   background-image: radial-gradient(circle 513px at 52.1% 52.6%, rgba(240,241,163,1) 0%, rgba(236,135,135,1) 90%);
+  animation: fadeIn 1s ease-in-out;
 }
 
 header, footer {
@@ -11,16 +12,19 @@ header, footer {
   color: #fff;
   text-align: center;
   padding: 20px ;
+  animation: slideInDown 1s ease-in-out;
 }
 
 h1, h2 {
   margin-top: 10px;
+  animation: slideInLeft 1s ease-in-out;
 }
 
 main {
   max-width: 800px;
   margin: 10px auto;
   padding: 20px;
+  animation: slideInRight 1s ease-in-out;
 }
 
 .button-container {
@@ -35,10 +39,12 @@ button {
   border-radius: 40px;
   cursor: pointer;
   margin: 10px;
+  transition: all 0.3s ease-in-out;
 }
 
 button:hover {
   background-color: #18336d;
+  transform: scale(1.05);
 }
 
 input[type="text"] {
@@ -46,6 +52,12 @@ input[type="text"] {
   border-radius: 40px;
   border: 1px solid #49d92c;
   margin-bottom: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 0 5px rgba(73, 217, 44, 0.8);
+  border: 1px solid rgba(73, 217, 44, 0.8);
 }
 
 #attendance-report-container {
@@ -53,11 +65,14 @@ input[type="text"] {
   border-radius: 40px;
   padding: 10px 5px 7px 8px ;
   background-color: rgba(255, 255, 255, 0.3); /* Opaque white background with 70% opacity */
+  animation: slideInUp 1s ease-in-out;
 }
+
 .action-buttons {
   text-align: center;
   margin-top: 20px;
-  margin-bottom: 400px;
+  margin-bottom: 40px;
+  animation: slideInUp 1s ease-in-out;
 }
 
 #WhatsApp {
@@ -68,10 +83,12 @@ input[type="text"] {
   border-radius: 20px;
   color: white;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 #WhatsApp:hover {
   background: linear-gradient(45deg, #00ffd5, #14a73e);
+  transform: scale(1.05);
 }
 
 .end-text {
@@ -80,9 +97,8 @@ input[type="text"] {
   left: 50%; /* Center the text horizontally */
   transform: translateX(-50%); /* Offset the text to compensate for centering */
   text-align: center; /* Optional: Center the text content */
+  animation: slideInUp 1s ease-in-out;
 }
-
-
 
 #print-button {
   padding: 0.6em 2em;
@@ -97,6 +113,7 @@ input[type="text"] {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  transition: all 0.3s ease-in-out;
 }
 
 #print-button:before {
@@ -148,4 +165,49 @@ input[type="text"] {
   left: 0;
   top: 0;
   border-radius: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }

@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  background-image: radial-gradient(circle 513px at 52.1% 52.6%, rgba(240,241,163,1) 0%, rgba(236,135,135,1) 90%);
+  background-image: radial-gradient(circle 513px at 52.1% 52.6%, rgb(164, 128, 128) 0%, rgb(98, 13, 102) 90%);
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -71,7 +71,7 @@ input[type="text"]:focus {
 .action-buttons {
   text-align: center;
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 400px;
   animation: slideInUp 1s ease-in-out;
 }
 
@@ -210,4 +210,33 @@ input[type="text"]:focus {
   to {
     transform: translateY(0);
   }
+}
+
+#help-button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border:none;
+  border-radius: 40px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+#help-button:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+#help-text {
+  margin-top: 20px;
+  text-align: left;
+  padding: 10px 30px;;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  animation: slideInUp 1s ease-in-out;
+}
+
+#help-text p {
+  margin-bottom: 10px;
 }

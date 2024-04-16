@@ -85,6 +85,20 @@ function recordLeave() {
      // Call printAttendance after updating leave
 }
 
+function toggleHelp() {
+    const helpText = document.getElementById("help-text");
+    const leaveInput = document.getElementById("leave-input");
+    const onDutyInput = document.getElementById("on-duty-input");
+  
+    if (helpText.style.display === "none") {
+      helpText.style.display = "block";
+      leaveInput.style.display = "none";
+      onDutyInput.style.display = "none";
+    } else {
+      helpText.style.display = "none";
+    }
+  }
+  
 function recordOnDuty() {
     const input = document.getElementById("on-duty-input-field").value;
     const indices = input.split(" ").map(Number);

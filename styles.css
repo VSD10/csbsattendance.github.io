@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  background-image: radial-gradient(circle 513px at 52.1% 52.6%, rgb(164, 128, 128) 0%, rgb(98, 13, 102) 90%);
+  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -11,7 +11,7 @@ header, footer {
   background-color: #333;
   color: #fff;
   text-align: center;
-  padding: 20px ;
+  padding: 2px ;
   animation: slideInDown 1s ease-in-out;
 }
 
@@ -71,7 +71,7 @@ input[type="text"]:focus {
 .action-buttons {
   text-align: center;
   margin-top: 20px;
-  margin-bottom: 400px;
+  margin-bottom: 20px;
   animation: slideInUp 1s ease-in-out;
 }
 

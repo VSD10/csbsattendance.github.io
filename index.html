@@ -17,6 +17,7 @@
         <div class="button-container">
             <button onclick="recordAttendance('Leave')">Record Leave</button>
             <button onclick="recordAttendance('On-duty')">Record On Duty</button>
+            <button onclick="recordAttendance('LateComers')">Record Late Comers</button>
             <button id="help-button" onclick="toggleHelp()">Help</button>
         </div>
 
@@ -31,12 +32,16 @@
             <input type="text" id="on-duty-input-field" placeholder="ENTER NO.BY SPACES">
             <button onclick="recordOnDuty()">Confirm On Duty</button>
         </div>
+        <div id="LateComers-input" style="display: none;">
+            <input type="text" id="LateComers-input-field" placeholder="ENTER NO.BY SPACES">
+            <button onclick="recordLateComers()">Confirm LateComers</button>
+        </div>
 
         <!-- Help text -->
         <div id="help-text" style="display: none;">
             <p>To record leave or on-duty students, enter the student roll numbers separated by spaces in the input box and click "Confirm Leave" or "Confirm On Duty" and then press "Print Attendance".</p>
             <p>For example, to record leave for students with roll numbers 1, 3, and 5, enter 1 3 5 in the leave input box and click "Confirm Leave" and then press "Print Attendance".</p>
-            <p>If it show "The input contains invalid indices. Please re-enter the input" , because you entered the same roll number in both absentes and onduty.</p>
+            <p>If it shows "The input contains invalid indices. Please re-enter the input," it's because you entered the same roll number in both absences and on duty.</p>
         </div>
 
         <section id="attendance-report-container">

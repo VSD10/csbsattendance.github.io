@@ -130,8 +130,7 @@ No. of Absent: ${absentCount}
 `
 if(leave.length>=1)
 {
-Absentees:
-;
+report+="\nAbsentees\n";
 
     for (let i = 0; i < leave.length; i++) {
         const index = leave[i];

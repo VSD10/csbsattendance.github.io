@@ -1,71 +1,70 @@
 // List of student names
-const studentNames = [
-           "demo",
-                    "ARTHI S",
-    "ADITHIYA D",
-    "AKKSHETHA M",
-    "ARAVINDRAJ G",
-    "ARUNACHALESHWARAN A",
-    "BANUSRI S",
-    "BARATHI K",
-    "BATHRINATH K",
-    "DEEPAN R",
-    "DHANUSH K R",
-    "DHARSHAN V S",
-    "DIVAKAR T",
-    "GAYATHRI R",
-    "GAYATHRI DEVI S",
-    "GIRIDASS S",
-    "GOPIKA S",
-    "GOWMITHA R",
-    "HARI KRISHNAN V",
-    "HARSHINI K",
-    "HEMAPRIYAA S",
-    "JAYAVARSHAN SS",
-    "KABILAN S",
-    "KAMALI S",
-    "KRISHNAPRASATH B",
-    "LOGESWARAN P V",
-    "MADHU VARSHA P",
-    "MALAVICKA V",
-    "MANIKANDAN R",
-    "MOHAMMED RASIQUE S A",
-    "NAVEEN KUMAR M",
-    "NIRNAJAN S",
-    "NITHYA SHREE S",
-    "PAVITHRA N",
-    "POJASHREE V",
-    "PRAGATHI C",
-    "PREETHIKA S V",
-    "PRIYADHARSHAN D S",
-    "RAMANAN A S",
-    "RAVEENA K",
-    "RISHWANTH ADISHWAR K",
-    "SABRANA K",
-    "SACHIN V",
-    "SAMIHA M",
-    "SANJANA S P",
-    "SASHVINA F",
-    "SASIDHARAN B",
-    "SHOBIKA S",
-    "SHYAM SUNDAR K",
-    "SRIRAM P",
-    "SUMITHA S",
-    "SURENDAR P",
-    "SWAPNA D P",
-    "UMA NANDHINI M",
-    "VAISHNAVI V",
-    "VASUDEVAN M",
-    "NAVIN KUMAR M",
-    "PRADEEP M",
-    "PRADIBA A S",
-    "SANTHOSH KUMAR S"
-];
+const studentNames = {
+    1:"ARTHI S",
+    2:"ADITHIYA D",
+    3:"AKKSHETHA M",
+    4:"ARAVINDRAJ G",
+    5:"ARUNACHALESHWARAN A",
+    6:"BANUSRI S",
+    7:"BARATHI K",
+    8:"BATHRINATH K",
+    9:"DEEPAN R",
+    10:"DHANUSH K R",
+    11:"DHARSHAN V S",
+    12:"DIVAKAR T",
+    13:"GAYATHRI R",
+    14:"GAYATHRI DEVI S",
+    15:"GIRIDASS S",
+    16:"GOPIKA S",
+    17:"GOWMITHA R",
+    18:"HARI KRISHNAN V",
+    19:"HARSHINI K",
+    20:"HEMAPRIYAA S",
+    21:"JAYAVARSHAN SS",
+    22:"KABILAN S",
+    23:"KAMALI S",
+    24:"KRISHNAPRASATH B",
+    25:"LOGESWARAN P V",
+    26:"MADHU VARSHA P",
+    27:"MALAVICKA V",
+    28:"MANIKANDAN R",
+    29:"MOHAMMED RASIQUE S A",
+    30:"NAVEEN KUMAR M",
+    31:"NIRNAJAN S",
+    32:"NITHYA SHREE S",
+    33:"PAVITHRA N",
+    34:"POJASHREE V",
+    35:"PRAGATHI C",
+    36:"PREETHIKA S V",
+    37:"PRIYADHARSHAN D S",
+    38:"RAMANAN A S",
+    39:"RAVEENA K",
+    40:"RISHWANTH ADISHWAR K",
+    41:"SABRANA K",
+    42:"SACHIN V",
+    43:"SAMIHA M",
+    44:"SANJANA S P",
+    45:"SASHVINA F",
+    46:"SASIDHARAN B",
+    47:"SHOBIKA S",
+    48:"SHYAM SUNDAR K",
+    49:"SRIRAM P",
+    50:"SUMITHA S",
+    51:"SURENDAR P",
+    52:"SWAPNA D P",
+    53:"UMA NANDHINI M",
+    54:"VAISHNAVI V",
+    55:"VASUDEVAN M",
+    302:"NAVIN KUMAR M",
+    303:"PRADEEP M",
+    304:"PRADIBA A S",
+    305:"SANTHOSH KUMAR S"
+};
 
 let leave = [];
 let onDuty = [];
 let Late = [];
-
+len=Object.keys(studentNames).length
 function recordAttendance(type) {
     if (type === "Leave") {
         document.getElementById("leave-input").style.display = "block";
@@ -87,7 +86,7 @@ function recordAttendance(type) {
 function recordLeave() {
     const input = document.getElementById("leave-input-field").value;
     const indices = input.split(" ").map(Number);
-    leave = indices.filter(index => index >= 0 && index < studentNames.length);
+    leave = indices;
     updateMessage(`Leave recorded for indices: ${leave.join(", ")}`);
     document.getElementById("leave-input").style.display = "none";
 }
@@ -95,7 +94,7 @@ function recordLeave() {
 function recordOnDuty() {
     const input = document.getElementById("on-duty-input-field").value;
     const indices = input.split(" ").map(Number);
-    onDuty = indices.filter(index => index >= 0 && index < studentNames.length);
+    onDuty = indices;
     updateMessage(`On Duty recorded for indices: ${onDuty.join(", ")}`);
     document.getElementById("on-duty-input").style.display = "none";  
 }
@@ -103,15 +102,15 @@ function recordOnDuty() {
 function recordLateComers() {
     const input = document.getElementById("LateComers-input-field").value;
     const indices = input.split(" ").map(Number);
-    Late = indices.filter(index => index >= 0 && index < studentNames.length);
+    Late = indices;
     updateMessage(`Late Comers recorded for indices: ${Late.join(", ")}`);
     document.getElementById("LateComers-input").style.display = "none";
 }
 
 function printAttendance() {
-    const presentCount = studentNames.length - leave.length;
+    const presentCount = len- leave.length;
     const absentCount = leave.length;
-    const attendancePercentage = (presentCount / studentNames.length) * 100;
+    const attendancePercentage = (presentCount / len) * 100;
 
     const now = new Date();
     let greeting = "Good Morning";
@@ -124,7 +123,7 @@ ${greeting} Sir, Today's Attendance
 
 Date: ${now.toLocaleDateString()}
 Class: II- B.Tech (CSBS)
-Total Strength: ${studentNames.length}
+Total Strength: ${len}
 No. of Present: ${presentCount}
 No. of Absent: ${absentCount}
 `

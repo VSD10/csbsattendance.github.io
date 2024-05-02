@@ -3,7 +3,8 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+   background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #bd44f4 0%, #cf6cc9 33%, #ee609c 66%, #f54c93 100%);
+ 
   animation: fadeIn 1s ease-in-out;
 }
 
